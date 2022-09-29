@@ -9,7 +9,8 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           
           <li class="nav-item">
-            <a class="nav-link text-light" href="#">Link</a>
+            <%# <a class="nav-link text-light" href="#"></a> %>
+            <%= link_to "Bloggers", users_path, class: "navbar text-light text-decoration-none" %>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -18,7 +19,7 @@
             <ul class="dropdown-menu text-light">
               <li><a class="dropdown-item" href="articles/new"> Create a New Article</a></li>
               <li class="dropdown-item">
-            <%= link_to "View Articles", articles_path, class: "text-dark" %>
+            <%= link_to "View all the Articles", articles_path, class: "text-dark text-decoration-none" %>
           </li>
             </ul>
           </li>

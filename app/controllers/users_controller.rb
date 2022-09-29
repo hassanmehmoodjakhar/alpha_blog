@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all
+  end
   def show
     @user = User.find(params[:id])
     @articles = @user.articles
@@ -27,7 +30,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = 'Account has been updated successfully'
-      redirect_to articles_path
+      redirect_to @user
     else
       render :edit, status: :unprocessable_entity
     end
