@@ -22,7 +22,7 @@
 <%= f.password_field :password, placeholder: "Choose a password" %><br/><br/>
 
 
-<%= f.submit :SignUp, class: "btn btn-success" %>
+<%= f.submit(@user.new_record? ? "Sign Up" : "Update Account", class: "btn btn-success") %>
 
 </p>
 
