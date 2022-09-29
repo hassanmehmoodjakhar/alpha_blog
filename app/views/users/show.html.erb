@@ -1,0 +1,16 @@
+<style>
+.container{
+  height: auto;
+}
+</style>
+<div class="container border-primary p-5 text-white text-center">
+<h1><%= @user.username %>'s Profile</h1>
+<br/>
+<h1>Articles</h1><br/>
+</div>
+<%= render 'articles/article' %>
+<div class="container text-center">
+<%= link_to 'Cancel and Return to Articles Listing Page', articles_path, class: "text-white" %>
+</div>
+
+<%= render 'layouts/footer' %>
