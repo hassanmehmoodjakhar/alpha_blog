@@ -11,9 +11,12 @@
     <div class="container">
      <%# <a href="#" class="btn btn-outline-success">View</a> %>
     <%= link_to "View Profile", user, class: "btn btn-outline-success" %>
+
+    <% if logged_in? && user == current_user %>
     <%# <a href="#" class="btn btn-outline-info">Edit</a> %>
     <%= link_to "Edit", edit_user_path(user), class: "btn btn-outline-info" %>
     <%# <a href="#" class="btn btn-outline-danger">Delete</a> %>
+    <% end %>
     </div>
    
   </div>

@@ -8,7 +8,8 @@ class ArticlesController < ApplicationController
 
   # Action to display all the articles
   def index
-    @articles = Article.all
+    # @articles = Article.all
+    @articles = Article.paginate(page: params[:page], per_page: 3)
   end
 
   # Action to create a new article and it is get request
@@ -23,14 +24,13 @@ class ArticlesController < ApplicationController
   # Action to create a new article and it is post request
   def create
     @article = Article.new(article_params)
-    @article.user = User.first
+    @article.user = current_user
     if @article.save
       flash[:notice] = 'Article was created successfully'
       redirect_to @article
 
     else
       render :new, status: :unprocessable_entity
-
     end
   end
 

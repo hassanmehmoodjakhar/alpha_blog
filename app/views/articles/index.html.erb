@@ -1,5 +1,5 @@
 <h1 class="text-center mt-4 text-white">Listing All the Articles</h1>
-
+<br/>
+<%= will_paginate @articles, class: "text-center text-white text-decoration-none p-3" %>
 <%= render 'article' %>
-
-<%= render 'layouts/footer' %>
+<%= will_paginate @articles, class: "text-center text-white text-decoration-none p-3" %>

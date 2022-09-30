@@ -17,15 +17,48 @@
               Articles
             </a>
             <ul class="dropdown-menu text-light">
+            <% if logged_in? %>
               <li><a class="dropdown-item" href="articles/new"> Create a New Article</a></li>
+            <% end %>
               <li class="dropdown-item">
             <%= link_to "View all the Articles", articles_path, class: "text-dark text-decoration-none" %>
           </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled text-light">Disabled</a>
+
+          <% if logged_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Profile [<%= current_user.username %>]
+            </a>
+            <div class="dropdown-menu text-light" aria-labelledby="navbar-dropdown" >
+              <%= link_to "View your Profile", user_path(current_user), class: "text-dark text-decoration-none" %><br/>
+              <%= link_to "Edit your Profile", edit_user_path(current_user), class: "text-dark text-decoration-none" %>
+            </div>
           </li>
+          <% end %>
+
+          <% if logged_in? %>
+
+          <li class="nav-item">
+            <%= link_to current_user.username, user_path(current_user), class: "nav-link text-white btn"%>
+          </li>
+
+          <li class="nav-item">
+            <%= button_to "Logout", logout_path, class: "nav-link text-white btn", method: :delete %>
+          </li>
+
+
+          
+          <% else %>
+           <li class="nav-item">
+            <%= link_to "Login", login_path, class: "nav-link text-white btn" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Signup", signup_path, class: "nav-link text-white btn" %>
+          </li>
+          <% end %>
         </ul>
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
