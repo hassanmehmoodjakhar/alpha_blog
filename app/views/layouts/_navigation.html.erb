@@ -29,11 +29,13 @@
           <% if logged_in? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Profile [<%= current_user.username %>]
+              <% ("Admin") if current_user.admin? %>Profile [<%= current_user.username %>]
             </a>
             <div class="dropdown-menu text-light" aria-labelledby="navbar-dropdown" >
               <%= link_to "View your Profile", user_path(current_user), class: "text-dark text-decoration-none" %><br/>
               <%= link_to "Edit your Profile", edit_user_path(current_user), class: "text-dark text-decoration-none" %>
+              <%= button_to "Delete your Profile", user_path(current_user), class: "text-danger text-decoration-none",
+              method: :delete, form: {data: {turbo_confirm: 'Are you sure?'}} %>
             </div>
           </li>
           <% end %>

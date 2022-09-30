@@ -14,7 +14,7 @@
     <div class="container">
      <%# <a href="#" class="btn btn-outline-success">View</a> %>
     <%= link_to "View", article_path(article), class: "btn btn-outline-success" %>
-    <% if logged_in? && article.user == current_user %>
+    <% if logged_in? && (article.user == current_user || current_user.admin?) %>
     <%# <a href="#" class="btn btn-outline-info">Edit</a> %>
     <%= link_to "Edit", edit_article_path(article), class: "btn btn-outline-info" %>
     <%# <a href="#" class="btn btn-outline-danger">Delete</a> %>
