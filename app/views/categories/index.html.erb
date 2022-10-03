@@ -1,0 +1,17 @@
+<div class="container">
+<% @categories.each do |category| %>
+<div class="row justify-content-md-center">
+<div class="col-8 mt-4">
+<div class="card text-center shadow mb-5 bg-white rounded">
+  
+  <h5 class="card-title"><%= link_to category.name, category_path(category)%></h5>
+  <h5 class="card-title"><%= pluralize(category.articles.count, "article") %></h5>
+  
+  <div class="card-footer text-muted">
+  <small>Created at <%= time_ago_in_words(category.created_at) %></small>
+  </div>
+</div>
+</div>
+</div>
+<% end %>
+</div>
